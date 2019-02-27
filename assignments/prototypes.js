@@ -145,6 +145,18 @@ Humanoid.prototype.greet = function () {
 
 
   // Stretch task: 
-  // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
+  // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function. 
+
+  // the GREAT-GRANDCHID 1 constructor function -- Villain
+  function Villain (villainAttribs) {
+    Humanoid.call(this, villainAttribs);
+    this.nemesis = villainAttribs.nemesis;
+  }
+
+  function Hero (heroAttribs) {
+    Humanoid.call(this, heroAttribs);
+    this.superPower = heroAttribs.superPower;
+  }
+
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
