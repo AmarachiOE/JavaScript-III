@@ -159,4 +159,41 @@ Humanoid.prototype.greet = function () {
   }
 
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
+
+
+  
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+  const thief = new Villain({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 4,
+      height: 2,
+    },
+    healthpoint: 30,
+    name: 'Dale',
+    team: 'The Misfits',
+    weapons: [
+      'Invisibility Mask'
+    ],
+    language: 'Common Tongue',
+    nemesis: 'Saint',
+  });
+
+  const watchman = new Hero({
+    createdAt: new Date(),
+    dimensions: {
+      length: 3,
+      width: 3,
+      height: 6,
+    },
+    Healthpoints: 40,
+    name: 'Saint',
+    team: 'Warriors',
+    weapons: [
+      'Flying Handcuffs'
+    ],
+    language: 'Common Tongue',
+    superPower: 'Super Sight',
+  });
