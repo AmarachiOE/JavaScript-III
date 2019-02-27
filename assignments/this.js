@@ -42,6 +42,7 @@
 // Principle 3
 
         // code example for New Binding
+        //create constructor function
         function Animal(food) {
             this.food = food;
             this.eat = function() {

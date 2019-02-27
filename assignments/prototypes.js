@@ -16,12 +16,37 @@
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 
+// the PARENT constructor function
+function GameObject (attribs){
+  this.createdAt = attribs.createdAt;
+  this.name = attribs.name;
+  this.dimensions = attribs.dimensions
+}
+
+// Methods for PARENT constructor function -- GameObject
+GameObject.prototype.destroy = function () {
+  return `${this.name} was removed from the game.`;
+}
+
+
 /*
   === CharacterStats ===
   * healthPoints
   * takeDamage() // prototype method -> returns the string '<object name> took damage.'
   * should inherit destroy() from GameObject's prototype
 */
+
+// the CHILD constructor function -- CharacterStats
+function CharacterStats (childAttribs) {
+  GameObject.call(this, childAttribs); //accesses parent's attrs
+  this.healthPoints = childAttribs.healthPoints;
+}
+
+// Methods for CHILD constructor function
+CharacterStats.prototype = Object.create(GameObject.prototype); //access all parent's methods/prototypes
+CharacterStats.prototype.takeDamage = function () {
+  return `${this.name} took damage.`
+}
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -33,6 +58,21 @@
   * should inherit takeDamage() from CharacterStats
 */
  
+// the GRANDCHILD constructor function -- Humanoid
+function Humanoid (grandchildAttribs) {
+  CharacterStats.call(this, grandchildAttribs); //access child's (and parent's?) attrs
+  this.team = grandchildAttribs.team;
+  this.weapons = grandchildAttribs.weapons;
+  this.language = grandchildAttribs.language;
+}
+
+// Methods for GRANDCHILD constructor function
+Humanoid.prototype = Object.create(CharacterStats.prototype); //access all child's (and paren'ts?) methods/prototypes
+Humanoid.prototype.greet = function () {
+  return `${this.name} offers a greeting in ${this.language}.`
+}
+
+
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
